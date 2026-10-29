@@ -1,0 +1,20 @@
+PANDUAN MENJALANKAN DI PAPAN INTERAKTIF (IFP)
+
+1. Jangan buka lewat file:// (klik dua kali index.html). Gunakan alamat https://,
+   misalnya GitHub Pages. Di file:// kamera dan model sensor sering diblokir.
+2. Gunakan Chrome/Edge terbaru, izinkan kamera, dan pastikan penutup privasi kamera IFP terbuka.
+3. Disarankan: jalankan "python unduh_model.py" sekali di komputer ber-internet,
+   lalu unggah folder aset/vendor dan aset/model. Sensor dimuat dari lokal;
+   bila tidak ada, otomatis memakai CDN.
+4. Teks status kamera di layar kalibrasi menampilkan GPU atau CPU.
+5. File game.js di folder utama adalah versi lama dan TIDAK dipakai; yang dipakai index.html
+   adalah aset/js/game.js.
+
+PERUBAHAN
+- Tailwind runtime (407 KB, menyusun CSS di browser tiap tampilan berubah) diganti CSS statis
+  aset/css/tailwind-static.css (26 KB). Waktu muat halaman 672 ms -> 166 ms; tampilan identik.
+- Kamera 640x360 dengan fallback bertahap; facingMode dihapus; pesan error spesifik.
+- Deteksi adaptif sesuai kecepatan perangkat; model lokal dulu lalu CDN; GPU -> CPU otomatis.
+- Kanvas overlay dibatasi 1280 px, tidak digambar saat kosong, rect di-cache.
+- Blur dan drop-shadow pada target bergerak di atas video dimatikan; loop game ~30 fps.
+- Gambar PNG 6 MB -> WebP 0,6 MB.

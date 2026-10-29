@@ -1,0 +1,31 @@
+
+body,html{font-family:'Nunito','Trebuchet MS',sans-serif}h1,h2,h3,.font-title,.btn-game{font-family:'Fredoka','Trebuchet MS',sans-serif}
+.world-backdrop{position:absolute;inset:0;background:linear-gradient(180deg,#12113922,#12113966),url('../background/kerajaan-angka.webp') center/cover;pointer-events:none}
+.world-sparkles{position:absolute;inset:0;z-index:3;pointer-events:none;background-image:radial-gradient(circle at 9% 40%,#fff6be 0 2px,transparent 3px),radial-gradient(circle at 80% 65%,#b5faff 0 2px,transparent 3px),radial-gradient(circle at 35% 76%,#ffe4a7 0 2px,transparent 3px),radial-gradient(circle at 65% 22%,#fff 0 1px,transparent 3px);animation:sparkle-drift 8s ease-in-out infinite alternate}
+#cover-screen{background:linear-gradient(110deg,#13123c33,#1c134666)}#cover-screen>svg{opacity:.17}
+#cover-screen>header,#cover-screen>footer{background:#0e0f2ebf;border:1px solid #c4b5fd33;border-radius:14px;padding:9px 12px;backdrop-filter:blur(10px)}
+.diorama{background:linear-gradient(155deg,#171d4eb8,#2e1858a6);border-color:#d9c9ff70!important;backdrop-filter:blur(8px);max-height:490px!important}
+.mission-panel{padding:clamp(12px,1.6vw,26px);border-radius:24px;background:linear-gradient(120deg,#14143be6,#211748dc);border:1px solid #d9c9ff44;box-shadow:0 18px 55px #0e093266;backdrop-filter:blur(10px)}
+.character-card{background:linear-gradient(180deg,#9980ff12,#1c124680)!important;border-color:#b5b8ff66!important;overflow:visible}.character-card:nth-child(2){border-color:#f4a6d880!important}
+.character-stage{height:clamp(90px,20vw,260px);width:100%;display:flex;align-items:center;justify-content:center;position:relative;isolation:isolate}.character-stage::after{content:'';position:absolute;bottom:0;left:18%;right:18%;height:10%;border-radius:50%;background:#0c0b35aa;filter:blur(6px);z-index:-1}
+.character-motion{display:inline-flex;align-items:center;justify-content:center;width:100%;height:100%;transform-origin:50% 90%;pointer-events:none}.character-art{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 9px 9px #0a093780);transform-origin:50% 85%}
+.raka{animation:raka-idle 3.6s ease-in-out infinite}.arka{animation:arka-hover 3s ease-in-out infinite}.reaction-cheer>.character-art{animation:anime-cheer .85s ease-in-out}.reaction-oops>.character-art{animation:anime-oops .55s ease-in-out}.reaction-wave>.character-art{animation:anime-wave 1s ease-in-out}
+.hud-character{width:32px;height:36px;flex-shrink:0}.hud-character .character-art{object-position:50% 30%}.arena-character{position:absolute;width:140%;height:140%;max-height:240px;opacity:.92;bottom:0;z-index:-1}.face-safe-zone{isolation:isolate;border-color:transparent}.face-zone-label{display:none}.camera-on .arena-character{display:none}.camera-on .face-safe-zone{border-color:#fff4}.camera-on .face-zone-label{display:block}#webcam-video{opacity:.48}
+.floating-bubble .reticle .fillc{fill:rgba(20,21,63,.8)}.floating-bubble.locked .reticle .fillc{fill:rgba(20,83,45,.85)}.animation-paused .character-motion,.animation-paused .character-art,.animation-paused .world-sparkles{animation-play-state:paused!important}
+@keyframes raka-idle{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes arka-hover{0%,100%{transform:translateY(1px) rotate(2deg)}50%{transform:translateY(-12px) rotate(-2deg)}}
+@keyframes anime-cheer{0%,100%{transform:translateY(0) scale(1)}20%{transform:translateY(4px) scale(1.04,.96)}50%{transform:translateY(-22px) rotate(-7deg) scale(1.04)}75%{transform:translateY(0) rotate(3deg)}}
+@keyframes anime-oops{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-7px) rotate(-4deg)}40%,80%{transform:translateX(7px) rotate(4deg)}}
+@keyframes anime-wave{0%,100%{transform:rotate(0)}25%,65%{transform:rotate(-7deg)}45%,85%{transform:rotate(7deg)}}
+@keyframes sparkle-drift{from{transform:translateY(4px);opacity:.35}to{transform:translateY(-16px);opacity:1}}
+@media(max-height:600px){.character-stage{height:clamp(75px,24vh,150px)}.mission-panel{padding:10px}.diorama{gap:5px!important}#cover-screen>footer{font-size:9px;padding:4px 8px}}
+@media(max-width:700px){.hud-character{width:22px;height:26px}.mission-panel{border-radius:14px;padding:8px}.character-stage{height:clamp(70px,18vw,125px)}#cover-screen{overflow-y:auto}#gameplay-screen>header{gap:4px;padding:4px;flex-wrap:wrap;max-height:none!important}#hud-p1-qcount{display:none}#gameplay-screen>footer{font-size:9px}.arena-character{max-height:110px}}
+@media(prefers-reduced-motion:reduce){.character-motion,.character-art,.world-sparkles{animation:none!important}}
+
+/* Grid mengikuti lebar arena 16:9. */
+#cover-screen{min-width:0;width:100%}#cover-screen>.grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);max-width:100%;min-width:0}#cover-screen>.grid>.diorama,#cover-screen>.grid>.mission-panel{grid-column:auto;min-width:0}#cover-screen h1{overflow-wrap:anywhere}
+@media(max-height:600px){
+#cover-screen{padding:8px;gap:6px;grid-template-rows:auto minmax(0,1fr) auto}#cover-screen>.grid{height:100%;overflow-y:auto;align-items:start;gap:10px;margin:0}#cover-screen>header{padding:4px 7px}#cover-screen>header .btn-game{font-size:10px;min-height:28px;padding:4px 8px}#cover-screen>header>div:first-child{max-width:58%}#cover-screen>header .tracking-wider{font-size:8px}.mission-panel{padding:9px!important}.mission-panel h1{font-size:25px}.mission-panel h1+div{font-size:10px;line-height:1.3}.mission-panel p{font-size:9px;line-height:1.4}.mission-panel>div:first-child>div:first-child{font-size:8px}.mission-panel select{font-size:9px;padding:4px}.mission-panel label{font-size:8px}.mission-panel .btn-game{font-size:10px;min-height:30px;padding:5px 8px}.mission-panel{gap:6px}.mission-panel>div{margin-top:0!important}.diorama{padding:7px!important;height:100%;min-height:230px}.character-stage{height:110px}.character-card{padding:4px!important}.character-card>span{font-size:9px}.diorama>div:first-child{font-size:8px}.diorama>div:last-child{font-size:8px;padding:4px}.diorama>div:last-child>span{display:none}#cover-screen>footer{padding:3px 6px;font-size:8px}
+}
+
+#cover-screen{grid-template-columns:minmax(0,1fr)}#cover-screen>header,#cover-screen>footer{min-width:0;max-width:100%}
